@@ -1,3 +1,5 @@
+package cinema;
+
 public class Cinema {
     public static void main(String[] args) {
         //Prints a 8x7 grid representing seats in a cinema.
