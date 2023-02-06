@@ -14,6 +14,11 @@ public class Cinema {
 
     }
 
+    /*
+    * Method that takes input from the user to build a row by column seating chart. Where the first value is number
+    * of rows, and the second value is number of seats(columns).
+    */
+
     public static void showSeats() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter number of rows: ");
@@ -45,8 +50,7 @@ public class Cinema {
     /*
     * Method that prompts the user the number of rows, and the number of seats per row. It then will calculate the
     * amount of total income from all seats based on certain parameters.
-    *
-    * */
+    */
     public static void ticketIncome() {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         int rows;
