@@ -3,21 +3,43 @@ package cinema;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.Scanner;
 
 public class Cinema {
     public static void main(String[] args) {
+        //ticketIncome();
+        showSeats();
 
-        //Prints a 8x7 grid representing seats in a cinema.
-        System.out.println("Cinema:");
-        System.out.println(" 1 2 3 4 5 6 7 8");
-        for (int i = 1; i < 8; i++) {
-            System.out.println(i + " S S S S S S S S");
 
+    }
+
+    public static void showSeats() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of rows: ");
+        int row = sc.nextInt();
+        System.out.println("Enter number of seats: ");
+        int seat = sc.nextInt();
+        String[][] arr = new String[row][seat];
+
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < seat; j++) {
+                arr[i][j] = "S";
+            }
         }
 
-        ticketIncome();
-
-
+        System.out.println("Cinema: ");
+        for (int i = 1; i <= seat; i++) {
+            System.out.print(" " + i);
+        }
+        System.out.println();
+        for (int i = 0; i < row; i++) {
+            System.out.print(i + 1 + " ");
+            for (int j = 0; j < seat; j++) {
+                System.out.print(arr[i][j] + " ");
+            }
+            System.out.println();
+        }
     }
 
     /*
