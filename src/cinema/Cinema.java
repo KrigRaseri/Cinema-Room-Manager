@@ -141,19 +141,6 @@ public class Cinema {
                 array[i][j] = "S";
             }
         }
-
-        System.out.println("Cinema: ");
-        for (int i = 1; i <= seat; i++) {
-            System.out.print(" " + i);
-        }
-        System.out.println();
-        for (int i = 0; i < row; i++) {
-            System.out.print(i + 1 + " ");
-            for (int j = 0; j < seat; j++) {
-                System.out.print(array[i][j] + " ");
-            }
-            System.out.println();
-        }
     }
 
     /**
