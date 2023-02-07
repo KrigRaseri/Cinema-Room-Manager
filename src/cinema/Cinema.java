@@ -3,15 +3,81 @@ package cinema;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Cinema {
     public static void main(String[] args) {
-        //ticketIncome();
-        showSeats();
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the number of rows: ");
+        int row = sc.nextInt();
+        System.out.print("Enter the number of seats: ");
+        int seat = sc.nextInt();
+        String[][] arr = new String[row][seat];
+
+        createSeats(arr, row, seat);
+
+        ticketPrice(arr, row, seat);
+        printSeats(arr, row, seat);
+
+    }
+
+    public static void ticketPrice(String[][] array, int row, int seats) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the number of rows: ");
+        int rowBuy = sc.nextInt();
+        System.out.print("Enter the number of seats: ");
+        int seatBuy = sc.nextInt();
 
 
+            //If total amount of seats is less than or equal to 60 then seats are 10$ each.
+            if (row * seats <= 60) {
+                System.out.println("Ticket price: $10");
+                array[rowBuy-1][seatBuy-1] = "B";
+            }
+
+            //More than 60 seats and even, then front half 10$ per seat, back half 8$ per seat.
+            else if (row * seats > 60 && row % 2 == 0) {
+                if (rowBuy <= row/2){
+                    System.out.println("Ticket price: $10");
+                }
+
+                else {
+                    System.out.println("Ticket price: $8");
+                }
+                array[rowBuy-1][seatBuy-1] = "B";
+
+
+            }
+
+            //More than 60 seats and odd, then the even front half 10$ and the odd back half 8$.
+            else if (row * seats > 60 && row % 2 != 0) {
+                if (rowBuy <= row/2) {
+                    System.out.println("Ticket price: $10");
+                }
+
+                else {
+                    System.out.println("Ticket price: $8");
+
+                }
+                array[rowBuy-1][seatBuy-1] = "B";
+            }
+
+    }
+
+    public static void printSeats(String[][] array, int row, int seats) {
+        //Prints out the seating arrangement.
+        System.out.println("Cinema: ");
+        for (int i = 1; i <= seats; i++) {
+            System.out.print(" " + i);
+        }
+        System.out.println();
+        for (int i = 0; i < row; i++) {
+            System.out.print(i + 1 + " ");
+            for (int j = 0; j < seats; j++) {
+                System.out.print(array[i][j] + " ");
+            }
+            System.out.println();
+        }
     }
 
     /*
@@ -19,17 +85,10 @@ public class Cinema {
     * of rows, and the second value is number of seats(columns).
     */
 
-    public static void showSeats() {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter number of rows: ");
-        int row = sc.nextInt();
-        System.out.println("Enter number of seats: ");
-        int seat = sc.nextInt();
-        String[][] arr = new String[row][seat];
-
+    public static void createSeats(String[][] array, int row, int seat) {
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < seat; j++) {
-                arr[i][j] = "S";
+                array[i][j] = "S";
             }
         }
 
@@ -41,7 +100,7 @@ public class Cinema {
         for (int i = 0; i < row; i++) {
             System.out.print(i + 1 + " ");
             for (int j = 0; j < seat; j++) {
-                System.out.print(arr[i][j] + " ");
+                System.out.print(array[i][j] + " ");
             }
             System.out.println();
         }
@@ -56,12 +115,15 @@ public class Cinema {
         int rows;
         int nSeats;
 
+
         try {
             System.out.print("Enter the number of rows: ");
             rows = Integer.parseInt(reader.readLine());
 
             System.out.print("Enter the number of seats in each row: ");
             nSeats = Integer.parseInt(reader.readLine());
+
+
 
             //If total amount of seats is less than or equal to 60 then seats are 10$ each.
             if (rows * nSeats <= 60) {
