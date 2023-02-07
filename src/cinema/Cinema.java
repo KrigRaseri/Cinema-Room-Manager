@@ -7,25 +7,34 @@ import java.util.Scanner;
 
 public class Cinema {
     public static void main(String[] args) {
+        //Sets up an array for seating and asks for user input for rows and seats.
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter the number of rows: ");
         int row = sc.nextInt();
-        System.out.print("Enter the number of seats: ");
+        System.out.print("Enter the number of seats in each row: ");
         int seat = sc.nextInt();
         String[][] arr = new String[row][seat];
 
+        //Method calls
         createSeats(arr, row, seat);
-
         ticketPrice(arr, row, seat);
         printSeats(arr, row, seat);
 
     }
 
+    /**
+     * Method to chose a seat based off of the initial seating arrangement size of rows x seats. Outputs the price
+     * of the chosen seat and updates the initial array to replace the "S" in the chosen position with a "B"
+     *
+     * @param array represents the initial seating array created in main.
+     * @param row represents the number of rows chosen in main.
+     * @param seats represents the number of seats in a row chosen in main.
+     * */
     public static void ticketPrice(String[][] array, int row, int seats) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter the number of rows: ");
+        System.out.print("Enter a row number: ");
         int rowBuy = sc.nextInt();
-        System.out.print("Enter the number of seats: ");
+        System.out.print("Enter a seat number in that row: ");
         int seatBuy = sc.nextInt();
 
 
@@ -64,6 +73,13 @@ public class Cinema {
 
     }
 
+    /**
+     * Prints out the seating arrangement that was setup at the program start.
+     *
+     * @param array represents the initial seating array created in main.
+     * @param row represents the number of rows chosen in main.
+     * @param seats represents the number of seats in a row chosen in main.
+    * */
     public static void printSeats(String[][] array, int row, int seats) {
         //Prints out the seating arrangement.
         System.out.println("Cinema: ");
@@ -80,10 +96,14 @@ public class Cinema {
         }
     }
 
-    /*
-    * Method that takes input from the user to build a row by column seating chart. Where the first value is number
-    * of rows, and the second value is number of seats(columns).
-    */
+    /**
+    * Method used at program start that takes the user chosen integers for rows and seats to fill a 2d array with "S"
+    * that represents seat. This creates a row x seats sized seating map.
+    *
+    * @param array represents the initial seating array created in main.
+    * @param row represents the number of rows chosen in main.
+    * @param seat represents the number of seats in a row chosen in main.
+    **/
 
     public static void createSeats(String[][] array, int row, int seat) {
         for (int i = 0; i < row; i++) {
@@ -106,9 +126,8 @@ public class Cinema {
         }
     }
 
-    /*
-    * Method that prompts the user the number of rows, and the number of seats per row. It then will calculate the
-    * amount of total income from all seats based on certain parameters.
+    /**
+    * Method that calculates the total income if all seats are purchased based on the number of rows and seats.
     */
     public static void ticketIncome() {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
