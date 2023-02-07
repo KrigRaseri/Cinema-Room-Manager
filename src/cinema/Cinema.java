@@ -15,11 +15,39 @@ public class Cinema {
         int seat = sc.nextInt();
         String[][] arr = new String[row][seat];
 
-        //Method calls
-        createSeats(arr, row, seat);
-        ticketPrice(arr, row, seat);
-        printSeats(arr, row, seat);
 
+        //Method calls
+        initialize(arr, row, seat);
+
+    }
+
+    /**
+     * Initializes the program by calling createSeats to use the user chosen rows and seats to build the seating
+     * arrangement, and then keeps asking the user for input to perform various tasks, or to end the program.
+     *
+     * @param array represents the initial seating array created in main.
+     * @param row represents the number of rows chosen in main.
+     * @param seat represents the number of seats in a row chosen in main.
+     *
+    * */
+    public static void initialize(String[][] array, int row, int seat) {
+        createSeats(array, row, seat);
+        Scanner sc = new Scanner(System.in);
+        while (true) {
+            System.out.println("""
+                    1. Show the seats
+                    2. Buy a ticket
+                    0. Exit""");
+
+            int input = sc.nextInt();
+            if (input == 0) {break;}
+
+            switch (input) {
+                case 1 -> printSeats(array, row, seat);
+                case 2 -> ticketPrice(array, row, seat);
+                default -> System.out.println("Try again");
+            }
+        }
     }
 
     /**
@@ -70,6 +98,8 @@ public class Cinema {
                 }
                 array[rowBuy-1][seatBuy-1] = "B";
             }
+
+            printSeats(array, row, seats);
 
     }
 
