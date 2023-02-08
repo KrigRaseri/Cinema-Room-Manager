@@ -3,6 +3,26 @@ package cinema;
 public class cinemaUtility {
 
     /**
+     * Method that returns true if "B" is found in the seating area array. This shows if the seat was bought.
+     *
+     * @param array represents the initial seating array created in main.
+     * @param row represents the row number chosen by user when using buyTicket.
+     * @param seat represents the number of the seat chosen by user when using buyTicket.
+     * @return returns true if "B" is found in the array(which stands for bought).
+     */
+    public static Boolean checkSeat(String[][] array, int row, int seat) {
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                if (array[i][j] == "B") {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * Method used at program start that takes the user chosen integers for rows and seats to fill a 2d array with "S"
      * that represents seat. This creates a row x seats sized seating map.
      *

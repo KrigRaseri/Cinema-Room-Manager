@@ -55,6 +55,11 @@ public class cinemaMethods {
         int seatBuy = sc.nextInt();
         int profits = 0;
 
+        if (cinemaUtility.checkSeat(array, row, seats)) {
+            System.out.println("That ticket has already been purchased!");
+            return  0;
+        }
+
 
         //If total amount of seats is less than or equal to 60 then seats are 10$ each.
         if (row * seats <= 60) {
