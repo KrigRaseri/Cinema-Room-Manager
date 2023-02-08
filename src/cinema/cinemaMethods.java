@@ -2,23 +2,42 @@ package cinema;
 
 import java.util.Scanner;
 
-public class CinemaMethods {
+public class cinemaMethods {
+
     /**
-     * Method used at program start that takes the user chosen integers for rows and seats to fill a 2d array with "S"
-     * that represents seat. This creates a row x seats sized seating map.
+     * Initializes the program by calling createSeats to use the user chosen rows and seats to build the seating
+     * arrangement, and then keeps asking the user for input to perform various tasks, or to end the program.
      *
      * @param array represents the initial seating array created in main.
      * @param row represents the number of rows chosen in main.
      * @param seat represents the number of seats in a row chosen in main.
-     **/
+     *
+     * */
+    public static void initialize(String[][] array, int row, int seat) {
+        cinemaUtility.createSeats(array, row, seat);
+        int profits = 0;
+        Scanner sc = new Scanner(System.in);
 
-    public static void createSeats(String[][] array, int row, int seat) {
-        for (int i = 0; i < row; i++) {
-            for (int j = 0; j < seat; j++) {
-                array[i][j] = "S";
+        while (true) {
+            System.out.println("""
+                    1. Show the seats
+                    2. Buy a ticket
+                    3. Statistics
+                    0. Exit""");
+
+            int input = sc.nextInt();
+            if (input == 0) {break;}
+
+            switch (input) {
+                case 1 -> cinemaUtility.printSeats(array, row, seat);
+                case 2 -> profits += cinemaMethods.buyTicket(array, row, seat);
+                case 3 -> cinemaUtility.statistics(array, row, seat, profits);
+                default -> System.out.println("Try again");
             }
         }
     }
+
+
 
     /**
      * Method to chose a seat based off of the initial seating arrangement size of rows x seats. Outputs the price
@@ -77,7 +96,9 @@ public class CinemaMethods {
             array[rowBuy-1][seatBuy-1] = "B";
         }
 
-        printSeats(array, row, seats);
+        cinemaUtility.printSeats(array, row, seats);
         return profits;
     }
+
+
 }
