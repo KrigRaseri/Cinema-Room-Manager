@@ -17,9 +17,12 @@ public class cinemaUtility {
      * @param seat represents the number of the seat chosen by user when using buyTicket.
      * @return returns true if incorrect input was detected.
      */
+
     public static boolean wrongInput(String[][] array, int row, int seat) {
         return row < 0 || row > array.length || seat < 0 || seat > array[0].length;
     }
+
+
 
     /**
      * Method that returns true if "B" is found in the seating area array. This shows if the seat was bought.
@@ -32,6 +35,8 @@ public class cinemaUtility {
     public static Boolean checkSeat(String[][] array, int row, int seat) {
         return array[row-1][seat-1].equals("B");
     }
+
+
 
     /**
      * Method used at program start that takes the user chosen integers for rows and seats to fill a 2d array with "S"
@@ -49,6 +54,8 @@ public class cinemaUtility {
             }
         }
     }
+
+
 
     /**
      * Gets the number of tickets sold and returns it as in integer.
@@ -71,6 +78,8 @@ public class cinemaUtility {
 
     }
 
+
+
     /**
      * A method that calculates some statistics based on the seating arrangement size(array), the number of rows,
      * seats per row, and total profit from ticket sales.
@@ -85,11 +94,14 @@ public class cinemaUtility {
         int nTickets = cinemaUtility.getTickets(array);
         double per = (((float)nTickets / (rows * seats)) * 100.0) ;
 
-        System.out.printf("Percentage:  %.2f%% \n", per);
         System.out.printf("Number of purchased tickets: %d \n", nTickets);
-        System.out.println("Total income: $" + profits );
+        System.out.printf("Percentage:  %.2f%% \n", per);
+        System.out.println("Current income: $" + profits );
+        System.out.println("Total income: " + totalIncome(rows, seats));
 
     }
+
+
 
     /**
      * Prints out the seating arrangement that was setup at the program start.
@@ -114,10 +126,12 @@ public class cinemaUtility {
         }
     }
 
+
+
     /**
      * Method that calculates the total income if all seats are purchased based on the number of rows and seats.
      */
-    public static String ticketIncome(int rows, int seats) {
+    public static String totalIncome(int rows, int seats) {
         String result = "";
 
         //If total amount of seats is less than or equal to 60 then seats are 10$ each.
