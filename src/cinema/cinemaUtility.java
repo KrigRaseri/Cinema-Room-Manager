@@ -1,5 +1,12 @@
 package cinema;
 
+/**
+ * This class is used for all methods that automatically do a task without direct user interaction. Any methods
+ * that has direct user interaction belongs in cinema methods.
+ *
+ * @author Krig Raseri
+ */
+
 public class cinemaUtility {
 
     /**

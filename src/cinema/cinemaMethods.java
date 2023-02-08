@@ -2,6 +2,13 @@ package cinema;
 
 import java.util.Scanner;
 
+/**
+ * This class is used for all methods that are interacted with by the user, any methods that are not directly
+ * interaction with bu user belong in cinema utility's.
+ *
+ * @author Krig Raseri
+ */
+
 public class cinemaMethods {
 
     /**
