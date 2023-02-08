@@ -10,6 +10,18 @@ package cinema;
 public class cinemaUtility {
 
     /**
+     * Checks to see if the user entered incorrect input.
+     *
+     * @param array represents the initial seating array created in main.
+     * @param row represents the row number chosen by user when using buyTicket.
+     * @param seat represents the number of the seat chosen by user when using buyTicket.
+     * @return returns true if incorrect input was detected.
+     */
+    public static boolean wrongInput(String[][] array, int row, int seat) {
+        return row < 0 || row > array.length || seat < 0 || seat > array[0].length;
+    }
+
+    /**
      * Method that returns true if "B" is found in the seating area array. This shows if the seat was bought.
      *
      * @param array represents the initial seating array created in main.

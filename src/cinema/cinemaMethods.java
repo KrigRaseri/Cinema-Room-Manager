@@ -62,10 +62,27 @@ public class cinemaMethods {
         int seatBuy = sc.nextInt();
         int profits = 0;
 
-        if (cinemaUtility.checkSeat(array, row, seats)) {
-            System.out.println("That ticket has already been purchased!");
-            return  0;
+        while (cinemaUtility.wrongInput(array, rowBuy, seatBuy)) {
+            System.out.println("Wrong input!");
+
+            System.out.print("Enter a row number: ");
+            rowBuy = sc.nextInt();
+            System.out.print("Enter a seat number in that row: ");
+            seatBuy = sc.nextInt();
+
         }
+
+
+        while (cinemaUtility.checkSeat(array, rowBuy, seatBuy)) {
+                System.out.println("That ticket has already been purchased");
+
+                System.out.print("Enter a row number: ");
+                rowBuy = sc.nextInt();
+                System.out.print("Enter a seat number in that row: ");
+                seatBuy = sc.nextInt();
+            }
+
+
 
 
         //If total amount of seats is less than or equal to 60 then seats are 10$ each.
