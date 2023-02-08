@@ -1,6 +1,13 @@
 package cinema;
 
 public class cinemaUtility {
+
+    /**
+     * Gets the number of tickets sold and returns it as in integer.
+     *
+     * @param array represents the seating arrangement matrix.
+     * @return returns the number of tickets sold.
+     */
     public static int getTickets(String [][] array) {
         int count = 0;
 
