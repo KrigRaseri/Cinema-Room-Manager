@@ -18,15 +18,7 @@ public class cinemaUtility {
      * @return returns true if "B" is found in the array(which stands for bought).
      */
     public static Boolean checkSeat(String[][] array, int row, int seat) {
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[i].length; j++) {
-                if (array[i][j] == "B") {
-                    return true;
-                }
-            }
-        }
-
-        return false;
+        return array[row-1][seat-1].equals("B");
     }
 
     /**
